@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lky Hotels</title>
+  <link rel="stylesheet" href="../home.css">
+  <link rel="icon" href="../Assets/Lylogo.png" type="image/icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .geo {
+      font-size: 40px;
+      font-weight: bold;
+      color: #e1e80f;
+      margin-left: 0px;
+      margin-top: 100px;
+      text-align: center;
+    }
+
+    .location {
+      width: 70%;
+      margin-left: 15%;
+    }
+
+    .ppp {
+      font-size: 20px;
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="main-div">
+    <!-- Header Segment -->
+    <div class="header">
+      <div id="logo-div">
+        <img src="../Assets/Lylogo.png" id="logo-image" alt="">
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="../home.html">Home</a>
+          </li>
+          <li>
+            <a href="about.html">About</a>
+          </li>
+          <li>
+            <a href="locations.html">Locations</a>
+          </li>
+          <li>
+            <a href="services.html">Services</a>
+          </li>
+          <li>
+            <a href="gallery.html">Gallery</a>
+          </li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+
+    <!-- Content Segment  -->
+    <div class="geo">Locations</div>
+    <button class="location" type="button" onclick="getlocation();">Jaipur</button>
+    <button class="location" type="button" onclick="getlocation();">Shahpura</button>
+    <button class="location" type="button" onclick="getlocation();">Bagru</button>
+    <button class="location" type="button" onclick="getlocation();">Behror</button>
+    <button class="location" type="button" onclick="getlocation();">Neelka</button>
+    <button class="location" type="button" onclick="getlocation();">Neemrana</button>
+    <button class="location" type="button" onclick="getlocation();">Bilaspur</button>
+    <div id="demo2" style="width: 1515px; height: 400px"></div>
+    <script src="https://maps.google.com/maps/api/js?sensor=false">
+    </script>
+    <script type="text/javascript">
+      function getlocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showLoc, errHand);
+        }
+      }
+      function showLoc(pos) {
+        latt = pos.coords.latitude;
+        long = pos.coords.longitude;
+        var lattlong = new google.maps.LatLng(latt, long);
+        var OPTions = {
+          center: lattlong,
+          zoom: 10,
+          mapTypeControl: true,
+          navigationControlOptions: {
+            style: google.maps.NavigationControlStyle.SMALL,
+          },
+        };
+        var mapg = new google.maps.Map(
+          document.getElementById("demo2"),
+          OPTions
+        );
+        var markerg = new google.maps.Marker({
+          position: lattlong,
+          map: mapg,
+          title: "You are here!",
+        });
+      }
+      function errHand(err) {
+        switch (err.code) {
+          case err.PERMISSION_DENIED:
+            result.innerHTML =
+              "The application doesn't have the permission" +
+              "to make use of location services";
+            break;
+          case err.POSITION_UNAVAILABLE:
+            result.innerHTML = "The location of the device is uncertain";
+            break;
+          case err.TIMEOUT:
+            result.innerHTML = "The request to get user location timed out";
+            break;
+          case err.UNKNOWN_ERROR:
+            result.innerHTML =
+              "Time to fetch location information exceeded" +
+              "the maximum timeout interval";
+            break;
+        }
+      }
+    </script>
+
+
+    <!-- Footer segment -->
+    <div class="footer">
+      <div id="footer-1">
+        <div id="footer-1-1">
+          <h2 style="color: white; margin-left:120px;">CONTACT US</h2>
+          <br>
+          <p style="margin-left: 24%;color: white; "><i class="fa-solid fa-envelope"></i> LKYHotels@gmail.com</p>
+          <p style="margin-left: 24%;color: white; "><i class="fa fa-phone"></i> +91 89304 02812</p>
+          <br>
+        </div>
+        <div id="footer-1-2">
+          <h2 style="color: white; margin-left:120px;">OUR BRANCHES</h2>
+          <br>
+          <p style="margin-left: 24%;color: white; "><a href="locations.html"
+              style="text-decoration: none; color: white;">JAIPUR - +91 98288 79111</a></p>
+          <p style="margin-left: 24%;color: white; "><a href="locations.html"
+              style="text-decoration: none; color: white;">SHAHPURA - +91 98283 38100</a></p>
+          <p style="margin-left: 24%;color: white; "><a href="locations.html"
+              style="text-decoration: none; color: white;">BAGRU - +91 98288 79222</a></p>
+          <p style="margin-left: 24%;color: white; "><a href="locations.html"
+              style="text-decoration: none; color: white;">BEHROR - +91 98288 01444</a></p>
+          <p style="margin-left: 24%;color: white; "><a href="locations.html"
+              style="text-decoration: none; color: white;">NEELKA - +91 98288 31555</a></p>
+          <p style="margin-left: 24%;color: white; "><a href="locations.html"
+              style="text-decoration: none; color: white;">NEEMRANA - +91 98288 59666</a></p>
+          <p style="margin-left: 24%;color: white; "><a href="locations.html"
+              style="text-decoration: none; color: white;">BILASPUR - +91 90531 79111</a></p>
+        </div>
+        <div id="footer-1-3">
+          <H2 style="color: white; margin-left:12Xpx;">QUICK LINK</H2>
+          <p style="margin: 20px 20px;"><a href="about.html" style="color: white; text-decoration: none;">ABOUT</a></p>
+          <p style="margin: 20px 20px;"><a href="services.html"
+              style="color: white; text-decoration: none;">SERVICES</a></p>
+          <p style="margin: 20px 20px;"><a href="" style="color: white; text-decoration: none;">CUSTOMER
+              SUPPORT</a></p>
+          <p style="margin: 20px 20px;"><a href="contact.html" style="color: white; text-decoration: none;">CONTACT
+              US</a></p>
+        </div>
+      </div>
+      <div id="footer-2">
+        <div id="footer-2-1">
+          <p style="color: white; margin: 30px 25%;">© 2023 Hokum Digitals. All rights reserved.</p>
+        </div>
+        <div id="footer-2-2">
+          <p style="margin: 30px 300px;"><a href="T&C.html" style="color: white; text-decoration: none;">Terms &
+              Condition</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>
